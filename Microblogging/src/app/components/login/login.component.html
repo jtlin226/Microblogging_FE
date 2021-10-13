@@ -1,5 +1,25 @@
-<div class="col-12" id="header">
-    <h1>MICROS</h1>
+<div class="container mt-5">
+    <div id="login-container" class="card col-4 offset-4 mb-5 shadow">
+
+        <!--Card containing login form-->
+        <div class="card-body pt-0">
+            <h2 id="login-header" class="card-title">Login</h2>
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input class="form-control" [(ngModel)]="username" type="text" placeholder="Username" autofocus>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input class="form-control" [(ngModel)]="password" type="password" placeholder="Password">
+            </div>
+            <!-- <div *ngIf="failedLogin" id="error-text">
+                Failed to login! Check username and password!
+            </div> -->
+            <br>
+            <div class="text-left">
+                <button class="rev-btn-confirm mr-2" type="button" (click)="login()">Login</button>
+                <button class="rev-btn-secondary mr-1" type="button" routerLink="/register">Register</button>
+            </div>
+        </div>
+    </div>
 </div>
-
-
