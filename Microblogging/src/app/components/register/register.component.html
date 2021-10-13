@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div id="register-container" class="col-4 offset-4 mb-5">
+
+        <!--Card containing login form-->
+        <div>
+            <h2 id="login-register-header">Register</h2>
+            <div>
+                <label class="form-label">First name</label>
+                <input class="form-control" [(ngModel)]="firstname" type="text" placeholder="Firstname" autofocus>
+            </div>
+            <div>
+                <label class="form-label">Last name</label>
+                <input class="form-control" [(ngModel)]="lastname" type="text" placeholder="Lastname" autofocus>
+            </div>
+            <div>
+                <label class="form-label">Username</label>
+                <input class="form-control" [(ngModel)]="username" type="text" placeholder="Username" autofocus>
+            </div>
+            <div>
+                <label class="form-label">Password</label>
+                <input class="form-control" [(ngModel)]="password" type="password" placeholder="Password">
+            </div>
+            <!-- <div *ngIf="failedLogin" id="error-text">
+                Failed to login! Check username and password!
+            </div> -->
+            <br>
+            <div>
+                <button type="button" (click)="register()">Register</button>
+                <button type="button" routerLink="/login">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
