@@ -57,9 +57,9 @@ export class RegisterComponent implements OnInit {
       this.successful = true;
       console.log(returnedUser);
       // redirect to login page after 3 seconds
-      // setTimeout(() => {
-      //   this.router.navigateByUrl("/login");
-      // }, 3000);
+      setTimeout(() => {
+        this.router.navigateByUrl("/login");
+      }, 3000);
 
     },
     // performs following code when an error occurs
