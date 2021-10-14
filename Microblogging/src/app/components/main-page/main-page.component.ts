@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-main-page',
@@ -8,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  content: string = "";
+  constructor(private router : Router, private modalService: NgbModal, private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -22,4 +25,15 @@ export class MainPageComponent implements OnInit {
   profilePage() {
     this.router.navigateByUrl("/profile")
   }
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
+  createMicro() {
+    let newMicro = {
+      id: 0,
+      content: this.content,
+      user: this.userService.getUserId()
+    }
+  }
+  
 }
