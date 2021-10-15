@@ -4,8 +4,8 @@
 
 <div>
   <ol>
-    <li *ngFor="">
-
+    <li *ngFor="let follow of following">
+      {{follow.username}}
       <button>Unfollow</button>
     </li>
   </ol>
