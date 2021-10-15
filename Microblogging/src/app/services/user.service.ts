@@ -57,6 +57,11 @@ export class UserService {
     return this.http.post(`${this.url}/authenticate`, authObject)
   }
 
+  public getFollowers(jwt: string): Observable<User[]>{
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwt}`);
+    return this.http.get<User[]>(`${this.url}/follower`, this.httpOptions);
+  }
+
   /**
    * Performs a GET to "/revuser" to fetch the User object for the user currently logged in and keeps it in this service.
    * Currently only subscribed to by UserService upon successful login().
