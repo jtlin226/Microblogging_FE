@@ -75,6 +75,12 @@ export class UserService {
     return this.http.get(`${this.url}`, this.httpOptions);
   }
 
+  private getFollowing(jwtObject: any & {jwt: string}): Observable<string[]>
+  {
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
+    return this.http.get<string[]>(`${this.url}/following`, this.httpOptions);
+  }
+
   /**
    * Getters for the User object kept by UserService.
    */
