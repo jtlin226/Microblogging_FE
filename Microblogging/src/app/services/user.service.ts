@@ -93,9 +93,15 @@ export class UserService {
     return this.user?.username!;
   }
 
-  getFollowing(jwtObject: any & {jwt: string}): Observable<string[]>
+  getFollowing(jwtObject: any & {jwt: string}): Observable<User[]>
   {
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
-    return this.http.get<string[]>(`${this.url}/following`, this.httpOptions);
+    return this.http.get<User[]>(`${this.url}/following`, this.httpOptions);
+  }
+
+  unFollow(jwtObject: any & {jwt: string}, unfollowId: number): Observable<User>
+  {
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
+    return this.http.put<User>(`${this.url}/unfollow/${unfollowId}`, this.httpOptions);
   }
 }
