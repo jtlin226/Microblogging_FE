@@ -15,17 +15,15 @@ export class FollowingComponent implements OnInit {
   ngOnInit() {
   }
 
-  following: string[] = [];
+  following: User[] = [];
 
   getFollowingList()
   {
     this.following = [];
     this.userService.getFollowing(this.authService.jwt).subscribe(followingUsers =>
     {
-      for (let name in followingUsers) 
-      {
-        this.following.push(name);
-      }
+      this.following = followingUsers;
+      console.log(this.following);
     });
   }
 }
