@@ -9,13 +9,21 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { FollowingComponent } from './components/following/following.component';
+import { MyFollowersComponent } from './components/my-followers/my-followers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfilePageComponent,
+    MainPageComponent,
+    FollowingComponent,
+    MyFollowersComponent
   ],
   imports: [
     BrowserModule,

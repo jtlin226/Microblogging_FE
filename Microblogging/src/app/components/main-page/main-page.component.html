@@ -1,30 +1,26 @@
 <div class="container col-12 border border-dark">
   <div class="row col-10 offset-1 justify-content-center border border-dark">
     <div class="col-3 border mt-5 mb-5 border-dark text-center">
-      <div class="col-4 offset-4 border border-dark" (click)="profilePage()" type="button">
+      <div class="col-4 offset-4 border border-dark" routerLink="/profile" type="button">
         Profile
       </div>
-      <div class="col-4 offset-4 border border-dark" (click)="followPage()" type="button">
+      <div class="col-4 offset-4 border border-dark" routerLink="/my-followers" type="button">
         Followers
       </div>
-      <div class="col-4 offset-4 border border-dark" (click)="followingPage()" type="button">
+      <div class="col-4 offset-4 border border-dark" routerLink="/following" type="button">
         Following
       </div>
     </div>
     
     <div class="col-6 mt-5 mb-5 border border-dark">
       <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button>
-      <div class="mt-3 flex border border-dark">
+      <div class="mt-3 flex border border-dark" *ngFor="let item of micros">
         <div class="row ml-1 mr-1 justify-content-left">
           <img src="/..">
-          <h6>Username</h6>
+          <h6>{{item.user.username}}</h6>
         </div>
-        <div class="mb-3 border border-dark" maxlength="100">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-          sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="mb-3 border border-dark">
+          {{item.content}}
         </div>
       </div>
 
@@ -40,8 +36,8 @@
     </button>
   </div>
   <div class="modal-body justify-content-center">
-    <!-- <textarea rows="6" cols="60" placeholder="Enter your post..." class="form-control" id="content" [(ngModel)]="content" required minlength="1" maxlength="20"></textarea> -->
-    <textarea rows="6" cols="60" placeholder="Enter your post..." class="form-control" id="content" required minlength="1" maxlength="20"></textarea>
+    <textarea rows="6" cols="60" placeholder="Enter your post..." class="form-control" id="content" [(ngModel)]="content" required minlength="1" maxlength="20"></textarea>
+    <!-- <textarea rows="6" cols="60" placeholder="Enter your post..." class="form-control" id="content" required minlength="1" maxlength="20"></textarea> -->
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="createMicro()">Ok</button>

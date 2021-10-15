@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Micro } from 'src/app/models/micro';
+import { MicroService } from 'src/app/services/micro.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,20 +13,15 @@ import { UserService } from 'src/app/services/user.service';
 export class MainPageComponent implements OnInit {
 
   content: string = "";
-  constructor(private router : Router, private modalService: NgbModal, private userService: UserService) { }
+  constructor(private router : Router, private modalService: NgbModal, private userService: UserService, private microService: MicroService) { }
 
+  micros: Micro[] = [];
+  
   ngOnInit() {
+    this.microService.getMicros().subscribe(result => this.micros = result);
+    console.log(this.micros);
   }
 
-  followPage() {
-    this.router.navigateByUrl("/my-followers")
-  }
-  followingPage() {
-    this.router.navigateByUrl("/following")
-  }
-  profilePage() {
-    this.router.navigateByUrl("/profile")
-  }
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
@@ -35,5 +32,4 @@ export class MainPageComponent implements OnInit {
       user: this.userService.getUserId()
     }
   }
-  
 }
