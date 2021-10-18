@@ -1,16 +1,16 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 import { UserService } from 'src/app/services/user.service';
-import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css']
 })
-export class ProfilePageComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
 
   constructor(private userService : UserService,
     private authService : AuthorizationService,
@@ -18,12 +18,21 @@ export class ProfilePageComponent implements OnInit {
     private location : Location) { }
 
     currentUser : User | undefined;
-    editing : boolean = false;
     successfulUpdate : boolean = false;
 
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.userService.getUser(this.authService.jwt).subscribe(user => this.currentUser = user);
+  }
+
+  updateProfile(){
+    this.userService.updateUser(this.authService.jwt, this.currentUser).subscribe( (result) => {
+      this.successfulUpdate = true;
+      setTimeout(() => this.goBack(), 3000)
+    })
+  }
+
+  private goBack(){
+    this.location.back();
   }
 
 }

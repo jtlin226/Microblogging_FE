@@ -1,3 +1,23 @@
-<p>
-  profile-page works!
-</p>
+<div class="container mt-5">
+  <div class="card shadow col-6 offset-3">
+    <div class="card-body">
+      <div class="d-flex align-items-baseline justify-content-between">
+        <h3 class="card-title">My Profile</h3>
+        <button class="rev-btn-confirm" style="float:right;" routerLink="/edit-profile">Edit</button>
+      </div>
+      <div class="mb-3">
+        <label for="currentUser.username" class="form-label">Username<img [src]="currentUser.imageURL" alt="My_image" width="42" height="42" style="float:left"></label>
+        <input id="currentUser.username" class="form-control" type="text" [(ngModel)]="currentUser.username" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="currentUser.about" class="form-label">About Me</label>
+        <textarea readonly class="form-control" id="currentUser.about" [(ngModel)]="currentUser.about"></textarea>
+      </div>
+      <br>
+      <div>
+        <button class="rev-btn-secondary mr-2" routerLink="/home">Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>
+

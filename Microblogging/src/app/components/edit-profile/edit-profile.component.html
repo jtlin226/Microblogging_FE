@@ -1,0 +1,29 @@
+<div class="container mt-5"> 
+    <div class="card shadow col-6 offset-3">
+        <div class="card-body">
+            <div class="d-flex align-items-baseline justify-content-between">
+                <h3 class="card-title mr-3">Edit Profile</h3>
+            </div>
+            <div class="mb-3">
+                <label for="currentUser.username" class="form-label">Username</label>
+                <input id="currentUser.username" class="form-control" type="text" [(ngModel)]="currentUser.username" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="currentUser.about" class="form-label">About Me</label>
+                <textarea class="form-control" id="currentUser.about" [(ngModel)]="currentUser.about"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="currentUser.imageURL" class="form-label">Image URL</label>
+                <input id="currentUser.imageURL" class="form-control" type="url" [(ngModel)]="currentUser.imageURL">
+            </div>
+            <div *ngIf="successfulUpdate" class="success-message">
+                Profile successfully updated! Redirecting...
+            </div>
+            <br>
+            <div>
+                <button id="submit" class="rev-btn-confirm mr-2" (click)="updateUser()">Submit</button>
+                <button class="rev-btn-secondary mr-2" routerLink="/profile">Back to Profile</button>
+            </div>
+        </div>
+    </div>
+</div>

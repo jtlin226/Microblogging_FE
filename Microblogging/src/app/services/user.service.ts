@@ -70,9 +70,9 @@ export class UserService {
   //     return jwtObject;
   //   }));
   // }
-  private getUser(jwtObject: any & {jwt: string}) {
+  getUser(jwtObject: any & {jwt: string}) {
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
-    return this.http.get(`${this.url}`, this.httpOptions);
+    return this.http.get<User>(`${this.url}`, this.httpOptions);
   }
 
   /**
@@ -86,5 +86,10 @@ export class UserService {
   }
   getUsername(): string {
     return this.user?.username!;
+  }
+
+  updateUser(jwt: string, updatedUser : any): Observable<User> {
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwt}`);
+    return this.http.put<User>(this.url, updatedUser, this.httpOptions)
   }
 }
