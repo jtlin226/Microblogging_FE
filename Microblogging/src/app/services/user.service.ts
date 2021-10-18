@@ -96,10 +96,6 @@ export class UserService {
   //     return jwtObject;
   //   }));
   // }
-  // private getUser(jwtObject: any & {jwt: string}) {
-  //   this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
-  //   return this.http.get(`${this.url}`, this.httpOptions);
-  // }
 
   public getCurrentUser(): Observable<User>{
     this.setHeaderWithJwt();
@@ -114,9 +110,17 @@ export class UserService {
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${this.authService.jwt}`);
   }
 
-  unFollow(jwtObject: any & {jwt: string}, unfollowId: number): Observable<User>
-  {
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
-    return this.http.put<User>(`${this.url}/unfollow/${unfollowId}`, this.httpOptions);
+  updateUser(updatedUser : any): Observable<User> {
+    this.setHeaderWithJwt();
+    let obj = {
+      id: updatedUser.id,
+      username: updatedUser.username,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      imageURL: updatedUser.imageURL,
+      about: updatedUser.about,
+      password: ''
+    }
+    return this.http.put<User>(`${this.url}/about`, obj, this.httpOptions)
   }
 }

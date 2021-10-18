@@ -13,6 +13,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { FollowingComponent } from './components/following/following.component';
 import { MyFollowersComponent } from './components/my-followers/my-followers.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowButtonComponent } from './components/follow-button/follow-button.component';
 
 @NgModule({
@@ -21,10 +22,11 @@ import { FollowButtonComponent } from './components/follow-button/follow-button.
     LoginComponent,
     NavbarComponent,
     RegisterComponent,
-    MainPageComponent,
-    ProfilePageComponent,
     FollowingComponent,
+    MainPageComponent,
     MyFollowersComponent,
+    ProfilePageComponent,
+    EditProfileComponent,
     FollowButtonComponent
   ],
   imports: [
