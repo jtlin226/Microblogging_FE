@@ -101,17 +101,9 @@ export class UserService {
   //   return this.http.get(`${this.url}`, this.httpOptions);
   // }
 
-<<<<<<< HEAD
-  /**
-   * Getters for the User object kept by UserService.
-   */
-  getUserObject() : User {
-    return this.user;
-=======
   public getCurrentUser(): Observable<User>{
     this.setHeaderWithJwt();
     return this.http.get<User>(this.url, this.httpOptions);
->>>>>>> main
   }
 
   public isUserFollowed(user: User, following: User[]): boolean{

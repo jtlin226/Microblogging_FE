@@ -30,3 +30,9 @@
 .content {
     font-family: 'Times New Roman', Times, serif;
 }
+
+#profile-photo {
+    height: 100px; 
+    width: 100px; 
+    border-radius: 50%;
+}
