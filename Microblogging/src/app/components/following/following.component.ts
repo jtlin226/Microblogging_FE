@@ -12,7 +12,9 @@ export class FollowingComponent implements OnInit {
 
   constructor(private userService: UserService, private authService: AuthorizationService) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.getFollowingList();
   }
 
   following: User[] = [];
@@ -20,7 +22,7 @@ export class FollowingComponent implements OnInit {
   getFollowingList()
   {
     this.following = [];
-    this.userService.getFollowing(this.authService.jwt).subscribe(followingUsers =>
+    this.userService.getFollowing().subscribe(followingUsers =>
     {
       this.following = followingUsers;
       console.log(this.following);
