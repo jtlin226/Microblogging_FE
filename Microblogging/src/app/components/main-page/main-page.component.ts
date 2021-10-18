@@ -16,32 +16,33 @@ export class MainPageComponent implements OnInit {
   content: string;
   micros: Micro[] = [];
   user: User;
-  msg: string;
-  url: any;
+  // msg: string;
+  // url: any;
+  imageURL: string;
 
   constructor(private router : Router, private modalService: NgbModal, private userService: UserService, private microService: MicroService) { }
 
-  selectFile(event: any) {
-		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
-			return;
-		}
+  // selectFile(event: any) {
+	// 	if(!event.target.files[0] || event.target.files[0].length == 0) {
+	// 		this.msg = 'You must select an image';
+	// 		return;
+	// 	}
 		
-		var mimeType = event.target.files[0].type;
+	// 	var mimeType = event.target.files[0].type;
 		
-		if (mimeType.match(/image\/*/) == null) {
-			this.msg = "Only images are supported";
-			return;
-		}
+	// 	if (mimeType.match(/image\/*/) == null) {
+	// 		this.msg = "Only images are supported";
+	// 		return;
+	// 	}
 		
-		var reader = new FileReader();
-		reader.readAsDataURL(event.target.files[0]);
+	// 	var reader = new FileReader();
+	// 	reader.readAsDataURL(event.target.files[0]);
 		
-		reader.onload = (_event) => {
-			this.msg = "";
-			this.url = reader.result; 
-		}
-	}
+	// 	reader.onload = (_event) => {
+	// 		this.msg = "";
+	// 		this.url = reader.result; 
+	// 	}
+	// }
   
   ngOnInit() {
     this.microService.getMicros().subscribe(result => this.micros = result.reverse());
@@ -67,6 +68,9 @@ export class MainPageComponent implements OnInit {
   }
 
   changeImage() {
-    console.log(this.url);
+    this.user.imageURL = this.imageURL;
+    this.userService.updateUser(this.user).subscribe();
+    this.modalService.dismissAll();
+    this.reloadComponent();
   }
 }

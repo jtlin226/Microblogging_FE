@@ -15,6 +15,7 @@ import { FollowingComponent } from './components/following/following.component';
 import { MyFollowersComponent } from './components/my-followers/my-followers.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowButtonComponent } from './components/follow-button/follow-button.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FollowButtonComponent } from './components/follow-button/follow-button.
     MyFollowersComponent,
     ProfilePageComponent,
     EditProfileComponent,
-    FollowButtonComponent
+    FollowButtonComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
