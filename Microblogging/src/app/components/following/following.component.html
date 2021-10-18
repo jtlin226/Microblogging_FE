@@ -6,7 +6,7 @@
   <ol>
     <li *ngFor="let follow of following">
       {{follow.username}}
-      <button>Unfollow</button>
+      <app-follow-button [user]="follow"></app-follow-button>
     </li>
   </ol>
 </div>
