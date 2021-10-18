@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private authService: AuthorizationService) { }
 
   ngOnInit(): void {
   }
@@ -19,7 +19,6 @@ export class ForgotPasswordComponent implements OnInit {
   password: string = "";
   usernameNotFound: boolean = false;
   usernameFound: boolean = false;
-  forgottenUser: User;
 
   findUser()
   {
@@ -27,7 +26,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.usernameFound = false;
     this.userService.getSpecificUser(this.username).subscribe((result) =>
     {
-      this.forgottenUser = result;
+      this.authService.setJwt(result);
       this.usernameFound = true;
     },
     (error) =>
@@ -40,10 +39,11 @@ export class ForgotPasswordComponent implements OnInit {
   resetPassword()
   {
     let returnedUser;
-    this.userService.updateUser(this.forgottenUser, this.password).subscribe((result) =>
+    this.userService.resetPassword(this.password).subscribe((result) =>
     {
       returnedUser = result
       console.log(returnedUser);
+      this.authService.setJwt("");
       // redirect to login page after 3 seconds
       setTimeout(() => {
         this.router.navigateByUrl("/login");
