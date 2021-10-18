@@ -3,8 +3,11 @@
     <div class="card-body">
       <h3 class="card-title">My Followers</h3>
       <div class="mt-2 follower-item row" *ngFor="let follower of followers">
-        <div class="col-12 align-self-center">
+        <div class="col-8 align-self-center">
           {{follower.username}}
+        </div>
+        <div class="col-4 align-self-center">
+          <app-follow-button [user]="follower"></app-follow-button>
         </div>       
       </div>
     </div>
