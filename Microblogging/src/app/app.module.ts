@@ -13,6 +13,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { FollowingComponent } from './components/following/following.component';
 import { MyFollowersComponent } from './components/my-followers/my-followers.component';
+import { FollowButtonComponent } from './components/follow-button/follow-button.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MyFollowersComponent } from './components/my-followers/my-followers.com
     MainPageComponent,
     ProfilePageComponent,
     FollowingComponent,
-    MyFollowersComponent
+    MyFollowersComponent,
+    FollowButtonComponent
   ],
   imports: [
     BrowserModule,

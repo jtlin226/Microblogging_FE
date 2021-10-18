@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.confirm-btn{
+    background-color: black;
+    box-sizing: border-box;
+    border: 1px solid black;
+    transition: all .25s ease-in-out;
+    color: white;
+}

@@ -15,14 +15,11 @@ export class MyFollowersComponent implements OnInit {
   constructor(private authService: AuthorizationService, private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getFollowers(this.authService.jwt).subscribe(
+    this.userService.getFollowers().subscribe(
       (result) => {
         this.followers = result;
         console.log(this.followers);
       }
     )
   }
-
-
-
 }
