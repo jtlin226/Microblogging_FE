@@ -112,4 +112,18 @@ export class UserService {
     }
     return this.http.put<User>(`${this.url}/about`, obj, this.httpOptions)
   }
+
+  resetPassword(password: string)
+  {
+    this.setHeaderWithJwt();
+    let obj = {
+      password: password
+    }
+    return this.http.put<User>(`${this.url}/password`, obj, this.httpOptions);
+  }
+
+  getSpecificUser(username: string): Observable<User>
+  {
+    return this.http.get<User>(`${this.url}/recover/${username}`)
+  }
 }

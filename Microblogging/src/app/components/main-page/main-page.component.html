@@ -1,8 +1,8 @@
 <div class="container col-12">
   <div class="row col-10 offset-1 justify-content-center">
-    <div class="col-3 mt-5 mb-5 text-center box-shadow">
+    <div class="col-3 mt-5 mb-5 text-center box-shadow" style="height: 500px;">
       <div>
-        <img [src]="url" id="profile-photo">
+        <img [src]="user.imageURL" id="profile-photo">
         <div class="mb-2 mt-2">
           <button class="btn btn-sm btn-outline-primary" (click)="open(changePhoto)">Change Image</button>
         </div>
@@ -39,7 +39,6 @@
           <hr>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -61,13 +60,14 @@
 
 <ng-template #changePhoto let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">New Micro</h4>
+    <h4 class="modal-title" id="modal-basic-title">Enter Image URL:</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
   </div>
   <p class="modal-body justify-content-center">
-    <input type="file" (change)="selectFile($event)">
+    <!-- <input type="file" (change)="selectFile($event)"> -->
+    <textarea type="text" [(ngModel)]="imageURL" cols="60"></textarea>
   </p>
   <div class="modal-footer">
     <button id="submit" class="btn btn-outline-dark" (click)="changeImage()">Change</button>
