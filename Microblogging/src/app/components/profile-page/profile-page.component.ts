@@ -16,6 +16,8 @@ export class ProfilePageComponent implements OnInit {
     private location : Location) { }
 
     username: string = '';
+    firstname: string = '';
+    lastname: string = ''
     about: string = '';
     imageURL: string = '';
 
@@ -28,6 +30,8 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getCurrentUser().subscribe((user) => {
       this.currentUser = user
       this.username = user.username
+      this.firstname = user.firstName
+      this.lastname = user.lastName
       this.about = user.about
       this.imageURL = user.imageURL
     });
