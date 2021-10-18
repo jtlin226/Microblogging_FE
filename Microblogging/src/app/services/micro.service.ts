@@ -26,7 +26,7 @@ export class MicroService {
     let dto = {
       id: 0,
       content: content,
-      user: this.userService.getUserObject()
+      user: this.userService.getUserId()
     }
     return dto;
   }

@@ -17,7 +17,7 @@ export class UserService {
   // url: string = `${environment.revAssureBase}revuser`;
   url = "http://localhost:8082/user";
 
-  private user: User | undefined;
+  private user: User;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -78,7 +78,7 @@ export class UserService {
   /**
    * Getters for the User object kept by UserService.
    */
-  getUserObject() : User | undefined {
+  getUserObject() : User {
     return this.user;
   }
   getUserId() : number {
