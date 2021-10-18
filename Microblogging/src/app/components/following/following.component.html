@@ -1,12 +1,15 @@
-<div>
-  <h3>Following</h3>
-</div>
-
-<div>
-  <ol>
-    <li *ngFor="let follow of following">
-      {{follow.username}}
-      <app-follow-button [user]="follow"></app-follow-button>
-    </li>
-  </ol>
+<div class="container">
+  <div class="card col-6 offset-3 mt-5">
+    <div class="card-body">
+      <h3 class="card-title">Following</h3>
+      <div class="mt-2 following-item row" *ngFor="let follow of following">
+        <div class="col-8 align-self-center">
+          {{follow.username}}
+        </div>
+        <div class="col-4 align-self-center">
+          <app-follow-button [user]="follow"></app-follow-button>
+        </div>       
+      </div>
+    </div>
+  </div>
 </div>
