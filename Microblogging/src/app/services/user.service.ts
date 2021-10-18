@@ -18,8 +18,6 @@ export class UserService {
   // url: string = `${environment.revAssureBase}revuser`;
   url = "http://localhost:8082/user";
 
-  private user: User;
-
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
@@ -83,19 +81,10 @@ export class UserService {
     return this.http.get<User[]>(`${this.url}/${username}`, this.httpOptions);
   }
 
-  /**
-   * Performs a GET to "/revuser" to fetch the User object for the user currently logged in and keeps it in this service.
-   * Currently only subscribed to by UserService upon successful login().
-   * @param jwt (Object) JSON object containing the property 'jwt' which holds the JWT.
-   * @returns Object containing JWT is passed back.
-   */
-  // private getUser(jwtObject: any & {jwt: string}) {
-  //   this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
-  //   return this.http.get(`${this.url}`, this.httpOptions).pipe(map((result: any) => {
-  //     this.user = this.userAdapter.adapt(result);
-  //     return jwtObject;
-  //   }));
-  // }
+  public searchByName(name: string): Observable<User[]>{
+    this.setHeaderWithJwt();
+    return this.http.get<User[]>(`${this.url}/search/${name}`, this.httpOptions);
+  }
 
   public getCurrentUser(): Observable<User>{
     this.setHeaderWithJwt();
