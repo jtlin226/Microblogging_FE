@@ -112,6 +112,15 @@ export class UserService {
 
   updateUser(updatedUser : any): Observable<User> {
     this.setHeaderWithJwt();
-    return this.http.put<User>(this.url, updatedUser, this.httpOptions)
+    let obj = {
+      id: updatedUser.id,
+      username: updatedUser.username,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      imageURL: updatedUser.imageURL,
+      about: updatedUser.about,
+      password: ''
+    }
+    return this.http.put<User>(`${this.url}/about`, obj, this.httpOptions)
   }
 }

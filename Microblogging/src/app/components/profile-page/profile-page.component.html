@@ -6,12 +6,12 @@
         <button class="rev-btn-confirm" style="float:right;" routerLink="/edit-profile">Edit</button>
       </div>
       <div class="mb-3">
-        <label for="currentUser.username" class="form-label">Username<img [src]="currentUser.imageURL" alt="My_image" width="42" height="42" style="float:left"></label>
-        <input id="currentUser.username" class="form-control" type="text" [(ngModel)]="currentUser.username" readonly>
+        <label for="username" class="form-label">Username<img [src]="imageURL" alt="My_image" width="42" height="42" style="float:left"></label>
+        <input id="username" class="form-control" type="text" [(ngModel)]="username" readonly>
       </div>
       <div class="mb-3">
-        <label for="currentUser.about" class="form-label">About Me</label>
-        <textarea readonly class="form-control" id="currentUser.about" [(ngModel)]="currentUser.about"></textarea>
+        <label for="about" class="form-label">About Me</label>
+        <textarea readonly class="form-control" id="about" [(ngModel)]="about"></textarea>
       </div>
       <br>
       <div>

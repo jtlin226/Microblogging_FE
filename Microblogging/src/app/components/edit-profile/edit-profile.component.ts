@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,16 +13,28 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private userService : UserService,
     private route : ActivatedRoute,
+    private router : Router,
     private location : Location) { }
+
+    username: string = '';
+    about: string = '';
+    imageURL: string = '';
 
     currentUser : User | undefined;
     successfulUpdate : boolean = false;
 
   ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe(user => this.currentUser = user);
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user
+      this.username = user.username
+      this.about = user.about
+      this.imageURL = user.imageURL
+    });
   }
 
   updateProfile(){
+    this.currentUser!.about = this.about;
+    this.currentUser!.imageURL = this.imageURL;
     this.userService.updateUser(this.currentUser).subscribe( (result) => {
       this.successfulUpdate = true;
       setTimeout(() => this.goBack(), 3000)
@@ -30,7 +42,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   private goBack(){
-    this.location.back();
+    this.router.navigateByUrl("/profile");
   }
 
 }

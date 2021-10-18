@@ -15,13 +15,22 @@ export class ProfilePageComponent implements OnInit {
     private route : ActivatedRoute,
     private location : Location) { }
 
+    username: string = '';
+    about: string = '';
+    imageURL: string = '';
+
     currentUser : User | undefined;
     editing : boolean = false;
     successfulUpdate : boolean = false;
 
 
   ngOnInit() {
-    this.userService.getCurrentUser().subscribe(user => this.currentUser = user);
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user
+      this.username = user.username
+      this.about = user.about
+      this.imageURL = user.imageURL
+    });
   }
 
 }
