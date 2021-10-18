@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators'
+import { AuthorizationService } from './authorization.service';
 // import { environment } from 'src/environments/environment';
 // import { UserAdapter } from '../models/user';
 
@@ -12,7 +13,7 @@ import { map, switchMap } from 'rxjs/operators'
 })
 export class UserService {
  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthorizationService) { }
 
   // url: string = `${environment.revAssureBase}revuser`;
   url = "http://localhost:8082/user";
@@ -57,6 +58,31 @@ export class UserService {
     return this.http.post(`${this.url}/authenticate`, authObject)
   }
 
+  public getFollowers(): Observable<User[]>{
+    this.setHeaderWithJwt();
+    return this.http.get<User[]>(`${this.url}/follower`, this.httpOptions);
+  }
+
+  public getFollowing(): Observable<User[]>{
+    this.setHeaderWithJwt();
+    return this.http.get<User[]>(`${this.url}/following`, this.httpOptions);
+  }
+
+  public followUser(user: User): Observable<User>{
+    this.setHeaderWithJwt();
+    return this.http.put<User>(`${this.url}/follow/${user.id}`, {}, this.httpOptions);
+  }
+
+  public unFollowUser(user: User): Observable<User>{
+    this.setHeaderWithJwt();
+    return this.http.put<User>(`${this.url}/unfollow/${user.id}`, {}, this.httpOptions);
+  }
+
+  public searchByUsername(username: string): Observable<User[]>{
+    this.setHeaderWithJwt();
+    return this.http.get<User[]>(`${this.url}/${username}`, this.httpOptions);
+  }
+
   /**
    * Performs a GET to "/revuser" to fetch the User object for the user currently logged in and keeps it in this service.
    * Currently only subscribed to by UserService upon successful login().
@@ -70,21 +96,29 @@ export class UserService {
   //     return jwtObject;
   //   }));
   // }
-  private getUser(jwtObject: any & {jwt: string}) {
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
-    return this.http.get(`${this.url}`, this.httpOptions);
-  }
+  // private getUser(jwtObject: any & {jwt: string}) {
+  //   this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${jwtObject.jwt}`);
+  //   return this.http.get(`${this.url}`, this.httpOptions);
+  // }
 
+<<<<<<< HEAD
   /**
    * Getters for the User object kept by UserService.
    */
   getUserObject() : User {
     return this.user;
+=======
+  public getCurrentUser(): Observable<User>{
+    this.setHeaderWithJwt();
+    return this.http.get<User>(this.url, this.httpOptions);
+>>>>>>> main
   }
-  getUserId() : number {
-    return this.user?.id!;
+
+  public isUserFollowed(user: User, following: User[]): boolean{
+    return following.some( u =>  u.id === user.id );
   }
-  getUsername(): string {
-    return this.user?.username!;
+
+  private setHeaderWithJwt(){
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${this.authService.jwt}`);
   }
 }

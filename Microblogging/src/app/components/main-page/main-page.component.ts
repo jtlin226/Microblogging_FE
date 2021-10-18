@@ -34,9 +34,19 @@ export class MainPageComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
   createMicro() {
+<<<<<<< HEAD
     console.log(this.content);
     console.log("Creating...")
     this.microService.createMicro(this.content);
     console.log("Created...")
+=======
+    // let newMicro = new Micro(0, this.content, this.userService.getUser());
+    
+    // let newMicro = {
+    //   id: 0,
+    //   content: this.content,
+    //   user: this.userService.getUserId()
+    // }
+>>>>>>> main
   }
 }
