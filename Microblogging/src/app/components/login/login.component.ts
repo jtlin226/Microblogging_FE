@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       this.failedLogin = false;
       this.authService.setJwt(result);
       console.log("YAY");
+      console.log(this.username);
       this.router.navigateByUrl("/home");
     },
     (error) => 

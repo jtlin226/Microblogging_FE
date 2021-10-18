@@ -18,7 +18,7 @@ export class UserService {
   // url: string = `${environment.revAssureBase}revuser`;
   url = "http://localhost:8082/user";
 
-  private user: User | undefined;
+  private user: User;
 
   httpOptions = {
     headers: new HttpHeaders({

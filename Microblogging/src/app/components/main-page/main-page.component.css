@@ -1,0 +1,38 @@
+.blue-button {
+    background-color: #6495ED;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    border-radius: 4px;
+}
+
+.blue-button:hover {
+    background-color: #0085ED;
+}
+
+.box-shadow {
+    box-shadow: 0 0 3px black;
+}
+
+#divider {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    height:1px;
+    color:gray;
+    background-color:gray
+}
+
+.content {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#profile-photo {
+    height: 100px; 
+    width: 100px; 
+    border-radius: 50%;
+}
