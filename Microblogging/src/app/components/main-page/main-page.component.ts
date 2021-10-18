@@ -68,16 +68,8 @@ export class MainPageComponent implements OnInit {
   }
 
   changeImage() {
-    let obj: User = {
-      id: this.user.id,
-      username: this.user.username,
-      firstName: this.user.firstName,
-      lastName: this.user.lastName,
-      imageURL: this.imageURL,
-      about: this.user.about,
-    }
-    
-    this.userService.updateUser(obj).subscribe();
+    this.user.imageURL = this.imageURL;
+    this.userService.updateUser(this.user).subscribe();
     this.modalService.dismissAll();
     this.reloadComponent();
   }
