@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { AuthorizationService } from 'src/app/services/authorization.service';
 import { UserService } from 'src/app/services/user.service';
 import { Location } from '@angular/common';
 
@@ -13,7 +12,6 @@ import { Location } from '@angular/common';
 export class ProfilePageComponent implements OnInit {
 
   constructor(private userService : UserService,
-    private authService : AuthorizationService,
     private route : ActivatedRoute,
     private location : Location) { }
 
@@ -23,7 +21,7 @@ export class ProfilePageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userService.getUser(this.authService.jwt).subscribe(user => this.currentUser = user);
+    this.userService.getCurrentUser().subscribe(user => this.currentUser = user);
   }
 
 }

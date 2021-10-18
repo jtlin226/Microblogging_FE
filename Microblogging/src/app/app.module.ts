@@ -9,11 +9,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
-import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { FollowingComponent } from './components/following/following.component';
 import { MyFollowersComponent } from './components/my-followers/my-followers.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FollowButtonComponent } from './components/follow-button/follow-button.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     MainPageComponent,
     MyFollowersComponent,
     ProfilePageComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    FollowButtonComponent
   ],
   imports: [
     BrowserModule,
