@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profile-page',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService : UserService,
+    private route : ActivatedRoute,
+    private location : Location) { }
+
+    username: string = '';
+    about: string = '';
+    imageURL: string = '';
+
+    currentUser : User | undefined;
+    editing : boolean = false;
+    successfulUpdate : boolean = false;
+
 
   ngOnInit() {
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user
+      this.username = user.username
+      this.about = user.about
+      this.imageURL = user.imageURL
+    });
   }
 
 }
