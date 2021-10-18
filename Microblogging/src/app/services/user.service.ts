@@ -110,7 +110,7 @@ export class UserService {
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${this.authService.jwt}`);
   }
 
-  updateUser(updatedUser : any, password: string = ''): Observable<User> {
+  updateUser(updatedUser : any): Observable<User> {
     this.setHeaderWithJwt();
     let obj = {
       id: updatedUser.id,
@@ -119,7 +119,7 @@ export class UserService {
       lastName: updatedUser.lastName,
       imageURL: updatedUser.imageURL,
       about: updatedUser.about,
-      password: password
+      password: ''
     }
     return this.http.put<User>(`${this.url}/about`, obj, this.httpOptions)
   }
