@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowingComponent } from './components/following/following.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { MyFollowersComponent } from './components/my-followers/my-followers.component';
@@ -11,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch:'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'forgot', component: ForgotPasswordComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: MainPageComponent },
   { path: 'profile', component: ProfilePageComponent },
