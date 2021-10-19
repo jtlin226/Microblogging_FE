@@ -19,6 +19,7 @@ export class ForgotPasswordComponent implements OnInit {
   password: string = "";
   usernameNotFound: boolean = false;
   usernameFound: boolean = false;
+  successfulUpdate: boolean = false;
 
   findUser()
   {
@@ -44,10 +45,15 @@ export class ForgotPasswordComponent implements OnInit {
       returnedUser = result
       console.log(returnedUser);
       this.authService.setJwt("");
+      this.successfulUpdate = true;
       // redirect to login page after 3 seconds
       setTimeout(() => {
         this.router.navigateByUrl("/login");
       }, 3000);
-    })
+    },
+    (error) =>
+    {
+      console.log(console.error());
+    });
   }
 }
