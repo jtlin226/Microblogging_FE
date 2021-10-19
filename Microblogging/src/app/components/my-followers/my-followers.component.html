@@ -4,6 +4,7 @@
       <h3 class="card-title">My Followers</h3>
       <div class="mt-2 follower-item row" *ngFor="let follower of followers">
         <div class="col-8 align-self-center">
+          <img [src]="follower.imageURL" class="profile-photo2">
           {{follower.firstName}} {{follower.lastName}} @{{follower.username}}
         </div>
         <div class="col-4 align-self-center">

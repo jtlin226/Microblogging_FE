@@ -15,7 +15,14 @@ export class MainPageComponent implements OnInit {
 
   content: string;
   micros: Micro[] = [];
-  user: User;
+  user: User = {
+    id: 0,
+    username: "",
+    firstName: "",
+    lastName: "",
+    imageURL: "",
+    about: ""
+  };
   // msg: string;
   // url: any;
   imageURL: string;

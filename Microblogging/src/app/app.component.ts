@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { isConstructorDeclaration } from 'typescript';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Microblogging';
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.router.navigate([""])
+  }
 }
+
+

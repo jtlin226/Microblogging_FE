@@ -1,9 +1,15 @@
-#navbar
-{
+#navbar {
     height: 100px;
     color: white;
     background-color: black;
 }
+
 h1 {
     padding: 15px;
+}
+
+.navItem {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
 }

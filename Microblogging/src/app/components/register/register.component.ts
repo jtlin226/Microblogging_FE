@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       lastName: this.lastname,
       username: this.username,
       password: this.password,
-      imageURL: "",
+      imageURL: "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png",
       about: "",
     }
     let returnedUser;
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
       // redirect to login page after 3 seconds
       setTimeout(() => {
         this.router.navigateByUrl("/login");
-      }, 3000);
+      }, 1000);
 
     },
     // performs following code when an error occurs
