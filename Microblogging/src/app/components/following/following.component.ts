@@ -19,6 +19,9 @@ export class FollowingComponent implements OnInit {
 
   following: User[] = [];
 
+  /**
+   * get list of all users following current logged-in user
+   */
   getFollowingList()
   {
     this.following = [];
