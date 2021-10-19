@@ -34,8 +34,6 @@ export class MicroService {
 
   getMicros(): Observable<Micro[]>{
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${this.authService.jwt}`);
-    console.log(this.authService.jwt)
-    console.log("before returning...")
     return this.http.get<Micro[]>(this.url, this.httpOptions)
   }
 
