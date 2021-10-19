@@ -10,11 +10,17 @@ import { UserService } from 'src/app/services/user.service';
 export class FollowButtonComponent implements OnInit {
 
   @Input() user: User | undefined;
+  showButton: boolean = true;
   showFollow: boolean = false;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getCurrentUser().subscribe(
+      (currentUser) => {
+        this.showButton = !(currentUser.id == this.user?.id);
+      }
+    )
     this.userService.getFollowing().subscribe(
       (following: User[]) => {
         this.showFollow = !this.userService.isUserFollowed(this.user!, following);

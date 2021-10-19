@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="card col-6 offset-3 mt-5">
+    <div class="card-body">
+      <h3 class="card-title">Search for Users</h3>
+      <div>
+        <input class="form-control" [(ngModel)]="searchInput" type="text" placeholder="Enter a name to look for" (input)="search()" autofocus>
+      </div>
+      <div class="mt-2 user-row row" *ngFor="let user of foundUsers">
+        <div class="col-8 align-self-center">
+          {{user.firstName}} {{user.lastName}} @{{user.username}}
+        </div>
+        <div class="col-4 align-self-center">
+          <app-follow-button [user]="user"></app-follow-button>
+        </div>       
+      </div>
+    </div>
+  </div>
+</div>

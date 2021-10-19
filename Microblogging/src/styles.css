@@ -6,3 +6,10 @@
     transition: all .25s ease-in-out;
     color: white;
 }
+
+.user-row{
+    border: 1px solid #706867;
+    border-radius: 5px;
+    height: 50px;
+    padding-left: 10px;
+}
