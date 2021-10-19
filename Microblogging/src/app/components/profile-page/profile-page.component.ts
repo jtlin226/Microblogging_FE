@@ -26,6 +26,9 @@ export class ProfilePageComponent implements OnInit {
     successfulUpdate : boolean = false;
 
 
+  /**
+   * get current user to populate page. This page only shows information and routes to other pages where changes can be made
+   */
   ngOnInit() {
     this.userService.getCurrentUser().subscribe((user) => {
       this.currentUser = user
