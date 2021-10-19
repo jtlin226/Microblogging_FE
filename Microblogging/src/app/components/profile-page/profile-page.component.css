@@ -1,0 +1,19 @@
+.blue-button {
+    background-color: #6495ED;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    border-radius: 4px;
+}
+
+.blue-button:hover {
+    background-color: #0085ED;
+}
+
+.box-shadow {
+    box-shadow: 0 0 3px black;
+}
+
+.content {
+    font-family: 'Times New Roman', Times, serif;
+}

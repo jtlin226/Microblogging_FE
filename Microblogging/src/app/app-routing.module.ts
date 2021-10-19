@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditPasswordComponent } from './components/edit-password/edit-password.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowingComponent } from './components/following/following.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'my-followers', component: MyFollowersComponent },
   { path: 'following', component: FollowingComponent },
   { path: 'edit-profile', component: EditProfileComponent },
+  { path: 'edit-password', component: EditPasswordComponent },
   { path: 'search-users', component: SearchUsersComponent }
 ];
 

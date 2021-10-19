@@ -1,6 +1,5 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,9 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class EditProfileComponent implements OnInit {
 
   constructor(private userService : UserService,
-    private route : ActivatedRoute,
-    private router : Router,
-    private location : Location) { }
+    private router : Router) { }
 
     username: string = '';
     about: string = '';

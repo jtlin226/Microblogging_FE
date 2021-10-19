@@ -17,6 +17,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { FollowButtonComponent } from './components/follow-button/follow-button.component';
 import { SearchUsersComponent } from './components/search-users/search-users.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { EditPasswordComponent } from './components/edit-password/edit-password.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     ProfilePageComponent,
     EditProfileComponent,
     FollowButtonComponent,
-    SearchUsersComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    EditPasswordComponent,
+    SearchUsersComponent
   ],
   imports: [
     BrowserModule,
