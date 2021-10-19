@@ -21,6 +21,10 @@ export class ForgotPasswordComponent implements OnInit {
   usernameFound: boolean = false;
   successfulUpdate: boolean = false;
 
+  /**
+   * make sure a matching user exists
+   * if one doesn't, trigger error message div
+   */
   findUser()
   {
     this.usernameNotFound = false;
@@ -37,6 +41,11 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
+  /**
+   * changes the password
+   * tells the service to make an http request
+   * if successful, redirect to login page
+   */
   resetPassword()
   {
     let returnedUser;

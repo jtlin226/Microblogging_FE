@@ -113,6 +113,11 @@ export class UserService {
     return this.http.put<User>(`${this.url}/about`, obj, this.httpOptions)
   }
 
+  /**
+   * send request to change user password
+   * @param password new password
+   * @returns observable of updated user
+   */
   resetPassword(password: string)
   {
     this.setHeaderWithJwt();
@@ -122,6 +127,11 @@ export class UserService {
     return this.http.put<User>(`${this.url}/password`, obj, this.httpOptions);
   }
 
+  /**
+   * send request to get specific user
+   * @param username username to recover
+   * @returns observable of user we're looking for
+   */
   getSpecificUser(username: string): Observable<User>
   {
     return this.http.get<User>(`${this.url}/recover/${username}`)
