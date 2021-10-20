@@ -14,8 +14,14 @@ export class MicroService {
 
   constructor(private http: HttpClient, private authService: AuthorizationService, private userService: UserService) { }
 
+  /**
+   * backend url endpoint for service calls
+   */
   url = "http://localhost:8082/micro";
 
+  /**
+   * http header to pass in jwt for authorization
+   */
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
@@ -23,20 +29,22 @@ export class MicroService {
     })
   };
 
-  convertToDto(user: User, content: string) {
-    let dto = {
-      id: 0,
-      content: content,
-      user: user
-    }
-    return dto;
-  }
-
+  /**
+   * Get all micros of current user logged in and other users followed
+   * @returns get method call to the back end
+   */
   getMicros(): Observable<Micro[]>{
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${this.authService.jwt}`);
     return this.http.get<Micro[]>(this.url, this.httpOptions)
   }
 
+  /**
+   * call a post method to the backend with jwt of current user and
+   * new content for a micro to be persisted in the backend
+   * @param currentUser the current user logged in
+   * @param newContent the content of the new micro(post) to be created
+   * @returns a post method call to the backend with newMicro object
+   */
   createMicro(currentUser: User, newContent: string): Observable<Micro> {
     let newMicro = {
       id: 0,
@@ -47,11 +55,4 @@ export class MicroService {
 
     return this.http.post<Micro>(this.url, newMicro, this.httpOptions)
   }
-
-  // createMicro(currentUser: User, newContent: string): Observable<Micro>{
-  //   let newMicro: Micro = new Micro(0, newContent, currentUser);
-  //   this.httpOptions.headers = this.httpOptions.headers.set('Authorization', `Bearer ${this.authService.jwt}`);
-  //   console.log(newMicro);
-  //   return this.http.post<Micro>(this.url, newMicro, this.httpOptions)
-  // }
 }

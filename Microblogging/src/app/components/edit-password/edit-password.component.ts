@@ -18,10 +18,16 @@ export class EditPasswordComponent implements OnInit {
   successfulUpdate : boolean = false
   passwordMatch : boolean = true
 
+  /**
+   * get current user to populate page information
+   */
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(user => this.username = user.username)
   }
 
+  /**
+   * function used to update current user's password. Will only work if both passwords inputted are the same
+   */
   updatePassword(){
     if(this.password1 === this.password2){
       this.userService.resetPassword(this.password1).subscribe((result) => {
@@ -33,6 +39,9 @@ export class EditPasswordComponent implements OnInit {
     }
   }
 
+  /**
+   * private function used by updatePassword to go back to the my profile page after the password is successfully changed
+   */
   goBack(){
     this.router.navigateByUrl("/profile")
   }

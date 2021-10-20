@@ -20,6 +20,9 @@ export class EditProfileComponent implements OnInit {
     currentUser : User | undefined;
     successfulUpdate : boolean = false;
 
+  /**
+   * gets current user to populate page
+   */
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((user) => {
       this.currentUser = user
@@ -29,6 +32,9 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * function used to update current user with what they replaced the values with on the page
+   */
   updateProfile(){
     this.currentUser!.about = this.about;
     this.currentUser!.imageURL = this.imageURL;
@@ -38,6 +44,9 @@ export class EditProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * private function used in updateProfile() to go to my profile page after the user is updated
+   */
   private goBack(){
     this.router.navigateByUrl("/profile");
   }
