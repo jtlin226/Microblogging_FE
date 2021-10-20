@@ -15,6 +15,7 @@ export class MyFollowersComponent implements OnInit {
   constructor(private authService: AuthorizationService, private userService: UserService) { }
 
   ngOnInit() {
+    // Get the user's followers on initialization of this component
     this.userService.getFollowers().subscribe(
       (result) => {
         this.followers = result;
