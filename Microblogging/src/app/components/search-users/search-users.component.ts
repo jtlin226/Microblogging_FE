@@ -18,6 +18,10 @@ export class SearchUsersComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Performs a search based on the user's input. First searches by user's first and last name,
+   * then searches by username.
+   */
   search(): void{
     this.foundUsers = []
     this.userService.searchByName(this.searchInput).subscribe( 
